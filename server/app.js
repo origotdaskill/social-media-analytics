@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
 
 /* CONFIGURATION */
 const __filename = fileURLToPath(import.meta.url);       
@@ -37,6 +38,10 @@ const upload = multer({ storage });
 
 /* Route with files */
 app.post("/auth/register", upload.single("picture"), register)
+
+/* ROUTES */
+app.use(("/auth") , authRoutes ) ;
+
 
 
 /* MONGO SETUP */     

@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import userroutes from "./routes/users.js";
 import authRoutes from "./routes/auth.js";
 
 /* CONFIGURATION */
@@ -41,7 +42,7 @@ app.post("/auth/register", upload.single("picture"), register)
 
 /* ROUTES */
 app.use(("/auth") , authRoutes ) ;
-
+app.use("/user", userroutes);
 
 
 /* MONGO SETUP */     
